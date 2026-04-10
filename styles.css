@@ -5,8 +5,15 @@ body {
   color: #eee;
 }
 
+@font-face {
+  font-family: myFirstFont;
+  src: url(metalfont/Curseyt.ttf);
+}
+
 header {
-  background: url(img/DRMB.jpg)  center/cover no-repeat;
+  /*background: url(img/DRMB.jpg)  center/cover no-repeat;*/
+  font-family: myFirstFont;
+  font-size: 100px;
   height: 100vh;
   display: flex;
   align-items: center;
