@@ -1,33 +1,78 @@
-body {
-  margin: 0;
-  font-family: 'Arial Black', sans-serif;
-  background: #000;
-  color: #eee;
-}
-
 @font-face {
   font-family: myFirstFont;
-  src: url(metalfont/Curseyt.ttf);
+  src: url('metalfont/Curseyt.ttf');
 }
 
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  font-family: myFirstFont, Arial, sans-serif;
+  background: black;
+  color: #eee;
+  overflow-x: hidden;
+}
+
+/* HEADER */
 header {
-  /*background: url(img/DRMB.jpg)  center/cover no-repeat;*/
-  font-family: myFirstFont;
-  font-size: 100px;
+  position: relative;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
 }
 
-header h1 {
-  font-size: 5rem;
-  letter-spacing: 8px;
+/* BACKGROUND IMAGE */
+.hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.3) contrast(1.2);
+  z-index: 0;
+}
+
+
+/* LOGO */
+.glitch-text {
+  z-index: 1;
+  font-size: 6rem;
   color: red;
-  text-shadow: 0 0 20px black;
+  text-shadow: 0 0 20px red;
+  animation: glitch 0.6s infinite;
 }
 
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-3px,3px); }
+  40% { transform: translate(3px,-3px); }
+  60% { transform: translate(-3px,-3px); }
+  80% { transform: translate(3px,3px); }
+  100% { transform: translate(0); }
+}
+
+/* TAGLINE */
+.tagline {
+  z-index: 1;
+  color: #aaa;
+  letter-spacing: 5px;
+  animation: flicker 2s infinite;
+}
+
+@keyframes flicker {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* NAV */
 nav {
   background: #111;
   padding: 15px;
@@ -38,36 +83,107 @@ nav a {
   color: #ccc;
   margin: 0 20px;
   text-decoration: none;
-  font-weight: bold;
+  transition: 0.3s;
 }
 
 nav a:hover {
   color: red;
+  text-shadow: 0 0 10px red;
 }
 
+/* SECTIONS */
 section {
   padding: 60px 20px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
 }
 
+/* HEADINGS */
 h2 {
   color: red;
   border-bottom: 1px solid #333;
-  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-.music iframe {
+/* FADE IN */
+.fade-in {
+  animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MUSIC BOX */
+.track {
+  background: #111;
+  padding: 20px;
+  border: 1px solid red;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 5px red; }
+  50% { box-shadow: 0 0 20px red; }
+  100% { box-shadow: 0 0 5px red; }
+}
+
+/* AUDIO */
+audio {
   width: 100%;
-  height: 200px;
-  border: none;
-  margin-top: 20px;
+  margin-top: 10px;
+  filter: invert(1);
 }
 
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  transition: 0.5s;
+  filter: grayscale(100%) contrast(120%);
+}
+
+.gallery img:hover {
+  transform: scale(1.2);
+}
+
+/* MERCH */
+.merch {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.item {
+  text-align: center;
+  transition: 0.3s;
+}
+
+.item img {
+  width: 200px;
+}
+
+.item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px red;
+}
+
+/* FOOTER */
 footer {
   background: #111;
   text-align: center;
   padding: 20px;
-  font-size: 0.8rem;
   color: #666;
 }
