@@ -3,14 +3,12 @@
   src: url('metalfont/Kramash-Regular.ttf');
 }
 
-/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* BODY */
 body {
   font-family: myFirstFont, Arial, sans-serif;
   background: black;
@@ -18,17 +16,81 @@ body {
   overflow-x: hidden;
 }
 
-/* HEADER */
+
 header {
   position: relative;
   height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  text-align: center;
 }
 
-/* BACKGROUND IMAGE */
+.hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.2) contrast(1.2);
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.glitch-text {
+  font-size: 8rem;
+  color: red;
+  text-shadow: 0 0 20px red;
+  margin-bottom: 10px;
+}
+
+.tagline {
+  color: #aaa;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.hero-buttons a {
+  padding: 12px 30px;
+  border: 2px solid red;
+  color: red;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  background: rgba(0,0,0,0.6);
+}
+
+.hero-buttons a:hover {
+  background: red;
+  color: black;
+  box-shadow: 0 0 15px red;
+}
+nav {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
 .hero-img {
   position: absolute;
   top: 0;
@@ -40,7 +102,6 @@ header {
   z-index: 0;
 }
 
-/* LOGO */
 .glitch-text {
   z-index: 1;
   font-size: 10rem;
@@ -58,7 +119,13 @@ header {
   100% { transform: translate(0); }
 }
 
-/* TAGLINE */
+section:nth-child(even) {
+  background: #0a0a0a;
+}
+
+section:nth-child(odd) {
+  background: #050505;
+}
 .tagline {
   z-index: 1;
   color: #aaa;
@@ -71,7 +138,6 @@ header {
   50% { opacity: 0.3; }
 }
 
-/* NAV */
 nav {
   background: #111;
   padding: 15px;
@@ -90,21 +156,18 @@ nav a:hover {
   text-shadow: 0 0 10px red;
 }
 
-/* SECTIONS */
 section {
   padding: 60px 20px;
   max-width: 1000px;
   margin: auto;
 }
 
-/* HEADINGS */
 h2 {
   color: red;
   border-bottom: 1px solid #333;
   margin-bottom: 20px;
 }
 
-/* FADE IN */
 .fade-in {
   animation: fadeIn 1.5s ease forwards;
 }
@@ -114,13 +177,37 @@ h2 {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* TRACK PLAYER */
 .track-player {
+  background: linear-gradient(145deg, #111, #000);
+  padding: 20px;
+  border: 1px solid red;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+.shows-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.show {
   background: #111;
   padding: 20px;
   border: 1px solid red;
-  animation: pulse 2s infinite;
-  margin-top: 20px;
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.show:hover {
+  background: red;
+  color: black;
+}
+
+.track-player:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px red;
 }
 
 @keyframes pulse {
@@ -129,14 +216,12 @@ h2 {
   100% { box-shadow: 0 0 5px red; }
 }
 
-/* AUDIO */
 audio {
   width: 100%;
   margin-top: 10px;
   filter: invert(1);
 }
 
-/* VISUALIZER */
 .visualizer {
   display: flex;
   justify-content: center;
@@ -168,7 +253,6 @@ audio {
   50% { height: 40px; }
 }
 
-/* GALLERY */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
@@ -177,15 +261,49 @@ audio {
 
 .gallery img {
   width: 100%;
-  transition: 0.5s;
-  filter: grayscale(100%) contrast(120%);
+  height: 250px;
+  object-fit: cover;
+}
+
+.item button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: red;
+  border: none;
+  color: black;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.item button:hover {
+  background: black;
+  color: red;
+  border: 1px solid red;
+}
+
+@media (max-width: 768px) {
+  .glitch-text {
+    font-size: 4rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .merch {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+body {
+  background: black url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
 }
 
 .gallery img:hover {
   transform: scale(1.2);
 }
 
-/* MERCH */
 .merch {
   display: flex;
   gap: 20px;
@@ -206,7 +324,6 @@ audio {
   box-shadow: 0 0 20px red;
 }
 
-/* FOOTER */
 footer {
   background: #111;
   text-align: center;
